@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		9399004521A88B8E00DF13C6 /* ColorDiffy.h in Headers */ = {isa = PBXBuildFile; fileRef = 9399004321A88B8E00DF13C6 /* ColorDiffy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9399004C21A88C7400DF13C6 /* ColorDiffy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9399004B21A88C7400DF13C6 /* ColorDiffy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9399004021A88B8E00DF13C6 /* ColorDiffy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ColorDiffy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9399004321A88B8E00DF13C6 /* ColorDiffy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorDiffy.h; sourceTree = "<group>"; };
 		9399004421A88B8E00DF13C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9399004B21A88C7400DF13C6 /* ColorDiffy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDiffy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +50,7 @@
 			children = (
 				9399004321A88B8E00DF13C6 /* ColorDiffy.h */,
 				9399004421A88B8E00DF13C6 /* Info.plist */,
+				9399004B21A88C7400DF13C6 /* ColorDiffy.swift */,
 			);
 			path = ColorDiffy;
 			sourceTree = "<group>";
@@ -95,6 +98,7 @@
 				TargetAttributes = {
 					9399003F21A88B8E00DF13C6 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -130,6 +134,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9399004C21A88C7400DF13C6 /* ColorDiffy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +266,7 @@
 		9399004921A88B8E00DF13C6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -270,6 +276,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = ColorDiffy/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -278,6 +285,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.alessandrominopoli.ColorDiffy;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -286,6 +294,7 @@
 		9399004A21A88B8E00DF13C6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -295,6 +304,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = ColorDiffy/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
