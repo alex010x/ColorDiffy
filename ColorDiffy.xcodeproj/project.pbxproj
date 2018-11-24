@@ -7,16 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		939628A421A977A90021CF3F /* ColorDiffy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939628A321A977A90021CF3F /* ColorDiffy.swift */; };
 		9399004521A88B8E00DF13C6 /* ColorDiffy.h in Headers */ = {isa = PBXBuildFile; fileRef = 9399004321A88B8E00DF13C6 /* ColorDiffy.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9399004C21A88C7400DF13C6 /* ColorDiffy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9399004B21A88C7400DF13C6 /* ColorDiffy.swift */; };
 		93CBCD2521A9745F00490159 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9399004421A88B8E00DF13C6 /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		939628A321A977A90021CF3F /* ColorDiffy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorDiffy.swift; sourceTree = "<group>"; };
 		9399004021A88B8E00DF13C6 /* ColorDiffy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ColorDiffy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9399004321A88B8E00DF13C6 /* ColorDiffy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorDiffy.h; sourceTree = "<group>"; };
 		9399004421A88B8E00DF13C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9399004B21A88C7400DF13C6 /* ColorDiffy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDiffy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +51,7 @@
 			children = (
 				9399004321A88B8E00DF13C6 /* ColorDiffy.h */,
 				9399004421A88B8E00DF13C6 /* Info.plist */,
-				9399004B21A88C7400DF13C6 /* ColorDiffy.swift */,
+				939628A321A977A90021CF3F /* ColorDiffy.swift */,
 			);
 			path = ColorDiffy;
 			sourceTree = "<group>";
@@ -136,7 +136,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9399004C21A88C7400DF13C6 /* ColorDiffy.swift in Sources */,
+				939628A421A977A90021CF3F /* ColorDiffy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
