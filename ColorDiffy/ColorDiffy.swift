@@ -17,7 +17,7 @@ public class ColorDiffy {
     ///   - color: the associated color to use to highlight the differences. Default color is red.
     ///   - returns: an NSMutableAttributedString object.
 
-    class func findDifferencesBetween(stringOne: String, stringTwo: String, options: String.EnumerationOptions = .byWords, color: UIColor = .red) -> NSMutableAttributedString {
+    public class func findDifferencesBetween(stringOne: String, stringTwo: String, options: String.EnumerationOptions = .byWords, color: UIColor = .red) -> NSMutableAttributedString {
         
         var rangesToConvert: [NSRange] = []
         var componentsNew = [(str: String, range: NSRange)]()
