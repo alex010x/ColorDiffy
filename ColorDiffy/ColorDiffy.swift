@@ -23,10 +23,10 @@ public class ColorDiffy {
         var componentsNew = [(str: String, range: NSRange)]()
         var componentsOld = [(str: String, range: NSRange)]()
         let mutableString = NSMutableAttributedString(string: stringTwo)
-        stringTwo.enumerateSubstrings(in: stringTwo.startIndex..<stringTwo.endIndex, options: .byWords) { substring, substringRange, enclosingRange, stop in
+        stringTwo.enumerateSubstrings(in: stringTwo.startIndex..<stringTwo.endIndex, options: options) { substring, substringRange, enclosingRange, stop in
             componentsNew.append((str: substring!, range: NSRange(substringRange, in: stringTwo)))
         }
-        stringOne.enumerateSubstrings(in: stringOne.startIndex..<stringOne.endIndex, options: .byWords) { substring, substringRange, enclosingRange, stop in
+        stringOne.enumerateSubstrings(in: stringOne.startIndex..<stringOne.endIndex, options: options) { substring, substringRange, enclosingRange, stop in
             componentsOld.append((str: substring!, range: NSRange(substringRange, in: stringOne)))
         }
         var s = 0
