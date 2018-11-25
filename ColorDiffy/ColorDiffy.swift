@@ -21,7 +21,7 @@ public class ColorDiffy {
         var rangesToConvert: [NSRange] = []
         var componentsNew = [(str: String, range: NSRange)]()
         var componentsOld = [(str: String, range: NSRange)]()
-        var evaluatedIndexes: [Int] = []
+        var LCS = [(str: String, range: NSRange)]()
         let mutableString = NSMutableAttributedString(string: stringTwo)
         stringTwo.enumerateSubstrings(in: stringTwo.startIndex..<stringTwo.endIndex, options: .byWords) { substring, substringRange, enclosingRange, stop in
             componentsNew.append((str: substring!, range: NSRange(substringRange, in: stringTwo)))
@@ -29,25 +29,19 @@ public class ColorDiffy {
         stringOne.enumerateSubstrings(in: stringOne.startIndex..<stringOne.endIndex, options: .byWords) { substring, substringRange, enclosingRange, stop in
             componentsOld.append((str: substring!, range: NSRange(substringRange, in: stringOne)))
         }
-        var lastOld = 0
         for (i, substr) in componentsNew.enumerated() {
-            evaluatedIndexes.append(i)
-            if substr.str != componentsOld[lastOld].str || i<lastOld {
-                if lastOld+1 < componentsOld.count && substr.str == componentsOld[lastOld+1].str {
-                    lastOld+=1
-                } else {
-                    rangesToConvert.append(substr.range)
+            for (j, subOld) in componentsOld.enumerated() {
+                if substr.str == subOld.str && i>=j {
+                    LCS.append(substr)
                 }
-            } else {
-                lastOld+=1
             }
         }
-        if var max = evaluatedIndexes.max() {
-            max += 1
-            if max < componentsNew.count {
-                for i in max..<componentsNew.count {
-                    rangesToConvert.append(componentsNew[i].range)
-                }
+
+        for elem in componentsNew {
+            if !LCS.contains(where: { (str, range) -> Bool in
+                return elem.str == str && elem.range == range
+            }) {
+                rangesToConvert.append(elem.range)
             }
         }
 
