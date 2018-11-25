@@ -34,9 +34,12 @@ public class ColorDiffy {
             for (j, subOld) in componentsOld.enumerated() {
                 if j<lastOld { continue }
                 evaluatedIndexes.append(i)
-                debugPrint("compare \(substr.str) with \(subOld.str)")
                 if substr.str != subOld.str || i<j {
-                    rangesToConvert.append(substr.range)
+                    if j+1 < componentsOld.count && substr.str == componentsOld[j+1].str {
+                        lastOld+=1
+                    } else {
+                        rangesToConvert.append(substr.range)
+                    }
                     break
                 } else {
                     lastOld+=1
