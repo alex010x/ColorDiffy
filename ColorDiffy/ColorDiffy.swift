@@ -29,14 +29,17 @@ public class ColorDiffy {
         stringOne.enumerateSubstrings(in: stringOne.startIndex..<stringOne.endIndex, options: .byWords) { substring, substringRange, enclosingRange, stop in
             componentsOld.append((str: substring!, range: NSRange(substringRange, in: stringOne)))
         }
+        var lastOld = 0
         for (i, substr) in componentsNew.enumerated() {
-            let k=i
             for (j, subOld) in componentsOld.enumerated() {
-                if j<k { continue }
+                if j<lastOld { continue }
                 evaluatedIndexes.append(i)
+                debugPrint("compare \(substr.str) with \(subOld.str)")
                 if substr.str != subOld.str || i<j {
                     rangesToConvert.append(substr.range)
+                    break
                 } else {
+                    lastOld+=1
                     break
                 }
             }
