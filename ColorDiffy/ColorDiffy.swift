@@ -31,20 +31,15 @@ public class ColorDiffy {
         }
         var lastOld = 0
         for (i, substr) in componentsNew.enumerated() {
-            for (j, subOld) in componentsOld.enumerated() {
-                if j<lastOld { continue }
-                evaluatedIndexes.append(i)
-                if substr.str != subOld.str || i<j {
-                    if j+1 < componentsOld.count && substr.str == componentsOld[j+1].str {
-                        lastOld+=1
-                    } else {
-                        rangesToConvert.append(substr.range)
-                    }
-                    break
-                } else {
+            evaluatedIndexes.append(i)
+            if substr.str != componentsOld[lastOld].str || i<lastOld {
+                if lastOld+1 < componentsOld.count && substr.str == componentsOld[lastOld+1].str {
                     lastOld+=1
-                    break
+                } else {
+                    rangesToConvert.append(substr.range)
                 }
+            } else {
+                lastOld+=1
             }
         }
         if var max = evaluatedIndexes.max() {
