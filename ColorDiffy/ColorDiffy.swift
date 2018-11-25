@@ -36,7 +36,6 @@ public class ColorDiffy {
                 }
             }
         }
-
         for elem in componentsNew {
             if !LCS.contains(where: { (str, range) -> Bool in
                 return elem.str == str && elem.range == range
@@ -44,7 +43,6 @@ public class ColorDiffy {
                 rangesToConvert.append(elem.range)
             }
         }
-
         for range in rangesToConvert {
             mutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: range)
         }
