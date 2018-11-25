@@ -30,12 +30,18 @@ public class ColorDiffy {
             componentsOld.append((str: substring!, range: NSRange(substringRange, in: stringOne)))
         }
         for (i, substr) in componentsNew.enumerated() {
-            for (j, subOld) in componentsOld.enumerated() {
+            let filteredOld = componentsOld.filter { (str,range) -> Bool in
+                !LCS.contains(where: { (str2,range2) -> Bool in
+                    return str==str2 && range == range2
+                })
+            }
+            for (j, subOld) in filteredOld.enumerated() {
                 if substr.str == subOld.str && i>=j {
                     LCS.append(substr)
                 }
             }
         }
+
         for elem in componentsNew {
             if !LCS.contains(where: { (str, range) -> Bool in
                 return elem.str == str && elem.range == range
@@ -43,6 +49,7 @@ public class ColorDiffy {
                 rangesToConvert.append(elem.range)
             }
         }
+
         for range in rangesToConvert {
             mutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: range)
         }
