@@ -21,7 +21,7 @@ public class ColorDiffy {
         var rangesToConvert: [NSRange] = []
         var componentsNew = [(str: String, range: NSRange)]()
         var componentsOld = [(str: String, range: NSRange)]()
-        var evaluatedIndexes = Set<Int>()
+        var evaluatedIndexes: [Int] = []
         let mutableString = NSMutableAttributedString(string: stringTwo)
         stringTwo.enumerateSubstrings(in: stringTwo.startIndex..<stringTwo.endIndex, options: .byWords) { substring, substringRange, enclosingRange, stop in
             componentsNew.append((str: substring!, range: NSRange(substringRange, in: stringTwo)))
@@ -29,39 +29,31 @@ public class ColorDiffy {
         stringOne.enumerateSubstrings(in: stringOne.startIndex..<stringOne.endIndex, options: .byWords) { substring, substringRange, enclosingRange, stop in
             componentsOld.append((str: substring!, range: NSRange(substringRange, in: stringOne)))
         }
-        var s = 0
-        var invalidJump: Bool = false
-        for i in 0..<componentsOld.count {
-            invalidJump = false
-            if i>=componentsNew.count { break }
-            while s<componentsNew.count && componentsNew[s].str != componentsOld[i].str {
-                rangesToConvert.append(componentsNew[s].range)
-                evaluatedIndexes.insert(s)
-                s+=1
-                if i+1 < componentsOld.count && s < componentsNew.count {
-                    if componentsNew[s].str == componentsOld[i+1].str {
-                        invalidJump = true
-                        break
-                    }
+        for (i, substr) in componentsNew.enumerated() {
+            let k=i
+            for (j, subOld) in componentsOld.enumerated() {
+                if j<k { continue }
+                evaluatedIndexes.append(i)
+                if substr.str != subOld.str || i<j {
+                    rangesToConvert.append(substr.range)
+                } else {
+                    break
                 }
             }
-            if !invalidJump {
-                evaluatedIndexes.insert(s)
-                s+=1
-            }
         }
-        if componentsNew.count > componentsOld.count {
-            for i in componentsOld.count..<componentsNew.count {
-                if !evaluatedIndexes.contains(i) {
+        if var max = evaluatedIndexes.max() {
+            max += 1
+            if max < componentsNew.count {
+                for i in max..<componentsNew.count {
                     rangesToConvert.append(componentsNew[i].range)
                 }
             }
         }
+
         for range in rangesToConvert {
             mutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: range)
         }
         return mutableString
     }
 }
-
 
