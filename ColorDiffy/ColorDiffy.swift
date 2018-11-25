@@ -30,11 +30,6 @@ public class ColorDiffy {
             componentsOld.append((str: substring!, range: NSRange(substringRange, in: stringOne)))
         }
         for (i, substr) in componentsNew.enumerated() {
-//            let filteredOld = componentsOld.filter { (str,range) -> Bool in
-//                !LCS.contains(where: { (str2,range2) -> Bool in
-//                    return str==str2 && range == range2
-//                })
-//            }
             for (j, subOld) in componentsOld.enumerated() {
                 if substr.str == subOld.str && i>=j {
                     if !LCS.contains(where: { (str,range) -> Bool in
