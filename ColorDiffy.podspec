@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "ColorDiffy"
-  s.version      = "0.1.2"
+  s.version      = "1.0.0"
   s.swift_version = "4.0"
   s.summary      = "ColorDiffy highlights the differences between two String, colorizing them."
 

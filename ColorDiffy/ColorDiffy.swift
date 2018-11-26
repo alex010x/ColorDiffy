@@ -18,37 +18,34 @@ public class ColorDiffy {
 
     public class func findDifferencesBetween(stringOne: String, stringTwo: String, color: UIColor = .red) -> NSMutableAttributedString {
 
-        var rangesToConvert: [NSRange] = []
-        var componentsNew = [(str: String, range: NSRange)]()
+        var componentsNew: [Int: (str: String, range: NSRange)?] = [:]
         var componentsOld = [(str: String, range: NSRange)]()
-        var LCS = [(str: String, range: NSRange)]()
         let mutableString = NSMutableAttributedString(string: stringTwo)
+        var i = 0
         stringTwo.enumerateSubstrings(in: stringTwo.startIndex..<stringTwo.endIndex, options: .byWords) { substring, substringRange, enclosingRange, stop in
-            componentsNew.append((str: substring!, range: NSRange(substringRange, in: stringTwo)))
+            componentsNew[i] = ((str: substring!, range: NSRange(substringRange, in: stringTwo)))
+            i+=1
         }
         stringOne.enumerateSubstrings(in: stringOne.startIndex..<stringOne.endIndex, options: .byWords) { substring, substringRange, enclosingRange, stop in
             componentsOld.append((str: substring!, range: NSRange(substringRange, in: stringOne)))
         }
-        for (i, substr) in componentsNew.enumerated() {
-            for (j, subOld) in componentsOld.enumerated() {
-                if substr.str == subOld.str && i>=j {
-                    LCS.append(substr)
+
+        for (key, substr) in componentsNew.sorted(by: { (arg0, arg1) -> Bool in
+            arg0.key < arg1.key
+        }) {
+            guard !componentsOld.isEmpty else { break }
+            for j in 0...key {
+                guard j<componentsOld.count else { break }
+                if substr?.str == componentsOld[j].str {
                     componentsOld.remove(at: j)
+                    componentsNew.removeValue(forKey: key)
                     break
                 }
             }
         }
 
-        for elem in componentsNew {
-            if !LCS.contains(where: { (str, range) -> Bool in
-                return elem.str == str && elem.range == range
-            }) {
-                rangesToConvert.append(elem.range)
-            }
-        }
-
-        for range in rangesToConvert {
-            mutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: range)
+        for (_,substr) in componentsNew {
+            mutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: substr!.range)
         }
         return mutableString
     }
