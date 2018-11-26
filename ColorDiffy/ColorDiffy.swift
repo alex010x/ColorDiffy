@@ -32,11 +32,9 @@ public class ColorDiffy {
         for (i, substr) in componentsNew.enumerated() {
             for (j, subOld) in componentsOld.enumerated() {
                 if substr.str == subOld.str && i>=j {
-                    if !LCS.contains(where: { (str,range) -> Bool in
-                        str == substr.str && range == substr.range
-                    }) {
-                        LCS.append(substr)
-                    }
+                    LCS.append(substr)
+                    componentsOld.remove(at: j)
+                    break
                 }
             }
         }
