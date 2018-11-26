@@ -18,7 +18,7 @@ Cocoapods:
 ```swift
 import ColorDiffy
 ColorDiffy.findDifferencesBetween(stringOne: firstString, stringTwo: secondString)
-ColorDiffy.findDifferencesBetween(stringOne: firstString, stringTwo: secondString ,color: UIColor)
+ColorDiffy.findDifferencesBetween(stringOne: firstString, stringTwo: secondString, color: UIColor)
 ```
 
 ![alt text](https://github.com/alex010x/ColorDiffy/blob/master/example.png)
