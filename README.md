@@ -32,7 +32,7 @@ myLabel.attributedText = ColorDiffy.findDifferencesBetween(stringOne: firstStrin
 
 OR
 
-```
+```swift
 myLabel.attributedText = ColorDiffy.findDifferencesBetween(stringOne: firstString, stringTwo: secondString, color: UIColor.yellow)
 ```
 
