@@ -28,6 +28,7 @@ let myLabel = UILabel()
 
 ```swift 
 //if not specified, default color is red
+
 myLabel.attributedText = ColorDiffy.findDifferencesBetween(stringOne: firstString, stringTwo: secondString)
 ```
 
