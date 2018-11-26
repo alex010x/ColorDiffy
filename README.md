@@ -14,3 +14,5 @@ Cocoapods:
 2) pod init
 3) Open your Podfile and insert pod 'ColorDiffy'.
 4) pod install
+
+![alt text](https://github.com/alex010x/ColorDiffy/blob/master/example.png)
