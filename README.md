@@ -1,6 +1,8 @@
 # ColorDiffy
 Colorize the differences between two String in the simpliest possible way!
 
+ColorDiffy only evaluates the differences on the second string compared to the first.
+
 Requires:
 
 iOS 9.0+
